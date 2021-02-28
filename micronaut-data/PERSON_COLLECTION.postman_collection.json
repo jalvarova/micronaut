@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "201d4324-f4ed-43be-a408-49dfe5254d45",
+		"name": "PERSON_COLLECTION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SAVE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "34d6de11-ea36-49e5-bd3a-ec5643bd2e79",
+						"exec": [
+							"let responseData = JSON.parse(responseBody);",
+							"",
+							"pm.globals.set(\"PERSON_ID\", responseData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Alvaro Aguinaga\",\n    \"age\": 28,\n    \"telephone\": \"986809223\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://walavo-persons-gzn4kc6qva-uc.a.run.app/api/v1/persons",
+					"protocol": "https",
+					"host": [
+						"walavo-persons-gzn4kc6qva-uc",
+						"a",
+						"run",
+						"app"
+					],
+					"path": [
+						"api",
+						"v1",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": {{PERSON_ID}},\n    \"name\": \"Alvaro Aguinagas\",\n    \"age\": 28,\n    \"telephone\": \"986809252\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://walavo-persons-gzn4kc6qva-uc.a.run.app/api/v1/persons",
+					"protocol": "https",
+					"host": [
+						"walavo-persons-gzn4kc6qva-uc",
+						"a",
+						"run",
+						"app"
+					],
+					"path": [
+						"api",
+						"v1",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://walavo-persons-gzn4kc6qva-uc.a.run.app/api/v1/persons",
+					"protocol": "https",
+					"host": [
+						"walavo-persons-gzn4kc6qva-uc",
+						"a",
+						"run",
+						"app"
+					],
+					"path": [
+						"api",
+						"v1",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND_ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://walavo-persons-gzn4kc6qva-uc.a.run.app/api/v1/persons/{{PERSON_ID}}",
+					"protocol": "https",
+					"host": [
+						"walavo-persons-gzn4kc6qva-uc",
+						"a",
+						"run",
+						"app"
+					],
+					"path": [
+						"api",
+						"v1",
+						"persons",
+						"{{PERSON_ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
