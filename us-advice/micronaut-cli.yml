@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: org.ht.com.pe
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [annotation-api, app-name, gcp-pubsub, github-workflow-google-cloud-run, gradle, hibernate-validator, http-client, java, java-application, jetty-server, junit, logback, lombok, management, micrometer, micrometer-prometheus, mongo-reactive, openapi, reactor, readme, shade, testcontainers, yaml]
