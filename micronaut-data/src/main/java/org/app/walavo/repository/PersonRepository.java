@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 public interface PersonRepository extends CrudRepository<Person, Long> {
 
-    @Query(value = "FROM Person p WHERE p.name = :name")
-    Optional<Person> findByName(String name);
+    @Query(value = "FROM Person p WHERE p.document = :document")
+    Optional<Person> findByDocument(String document);
 }

@@ -33,6 +33,16 @@ public class ProductService {
                 .onErrorReturnItem(Person.instance());
     }
 
+    public Single<Person> deletePerson(Long id) throws Exception {
+        validatePersonExists(Person.builder().id(id).build());
+        return findByIdPersons(id)
+                .map((Person entity) -> {
+                    personRepository.delete(entity);
+                    return entity;
+                })
+                .onErrorReturnItem(Person.instance());
+    }
+
 
     public Observable<Person> findAllPersons() {
         return Observable.fromIterable(personRepository.findAll())
@@ -45,7 +55,7 @@ public class ProductService {
 
     private void validatePersonExists(Person person) throws Exception {
         if (Objects.isNull(person.getId())) {
-            Person personFound = personRepository.findByName(person.getName()).orElse(null);
+            Person personFound = personRepository.findByDocument(person.getName()).orElse(null);
             if (Objects.nonNull(personFound))
                 throw new Exception("Exists Person");
         } else {

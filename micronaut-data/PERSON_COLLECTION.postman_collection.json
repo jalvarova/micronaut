@@ -11,7 +11,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "34d6de11-ea36-49e5-bd3a-ec5643bd2e79",
 						"exec": [
 							"let responseData = JSON.parse(responseBody);",
 							"",
@@ -26,7 +25,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Alvaro Aguinaga\",\n    \"age\": 28,\n    \"telephone\": \"986809223\"\n}",
+					"raw": "{\n    \"name\": \"Alvaro DAniel\",\n    \"lastName\": \"Aguinaga\",\n    \"document\": \"47082903\",\n    \"age\": \"29\",\n    \"telephone\": 986809252,\n    \"birthDate\": \"1992-03-27\",\n    \"gender\": \"M\",\n    \"email\": \"alvaro92a18@gmail.com\",\n    \"address\": \"CALLE SAN MIGUEL 488\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -34,13 +33,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://walavo-persons-gzn4kc6qva-uc.a.run.app/api/v1/persons",
-					"protocol": "https",
+					"raw": "{{HOST_CLOUD}}/api/v1/persons",
 					"host": [
-						"walavo-persons-gzn4kc6qva-uc",
-						"a",
-						"run",
-						"app"
+						"{{HOST_CLOUD}}"
 					],
 					"path": [
 						"api",
@@ -58,7 +53,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": {{PERSON_ID}},\n    \"name\": \"Alvaro Aguinagas\",\n    \"age\": 28,\n    \"telephone\": \"986809252\"\n}",
+					"raw": "{\n    \"id\": {{PERSON_ID}},\n    \"name\": \"Alvaro Daniel\",\n    \"lastName\": \"Aguinaga\",\n    \"document\": \"47082903\",\n    \"age\": \"29\",\n    \"telephone\": 986809252,\n    \"birthDate\": \"1992-03-27\",\n    \"gender\": \"M\",\n    \"email\": \"alvaro92a18@gmail.com\",\n    \"address\": \"CALLE SAN MIGUEL 488\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -66,13 +61,9 @@
 					}
 				},
 				"url": {
-					"raw": "https://walavo-persons-gzn4kc6qva-uc.a.run.app/api/v1/persons",
-					"protocol": "https",
+					"raw": "{{HOST_CLOUD}}/api/v1/persons",
 					"host": [
-						"walavo-persons-gzn4kc6qva-uc",
-						"a",
-						"run",
-						"app"
+						"{{HOST_CLOUD}}"
 					],
 					"path": [
 						"api",
@@ -89,13 +80,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://walavo-persons-gzn4kc6qva-uc.a.run.app/api/v1/persons",
-					"protocol": "https",
+					"raw": "{{HOST_CLOUD}}/api/v1/persons",
 					"host": [
-						"walavo-persons-gzn4kc6qva-uc",
-						"a",
-						"run",
-						"app"
+						"{{HOST_CLOUD}}"
 					],
 					"path": [
 						"api",
@@ -112,13 +99,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://walavo-persons-gzn4kc6qva-uc.a.run.app/api/v1/persons/{{PERSON_ID}}",
-					"protocol": "https",
+					"raw": "{{HOST_CLOUD}}/api/v1/persons/{{PERSON_ID}}",
 					"host": [
-						"walavo-persons-gzn4kc6qva-uc",
-						"a",
-						"run",
-						"app"
+						"{{HOST_CLOUD}}"
 					],
 					"path": [
 						"api",
@@ -129,7 +112,120 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseData = JSON.parse(responseBody);",
+							"",
+							"pm.globals.set(\"PERSON_ID\", responseData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{HOST_CLOUD}}/api/v1/persons/{{PERSON_ID}}",
+					"host": [
+						"{{HOST_CLOUD}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"persons",
+						"{{PERSON_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MONITORING_HEALTH",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST_CLOUD}}/health",
+					"host": [
+						"{{HOST_CLOUD}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MONITORING_METRICS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST_CLOUD}}/metrics",
+					"host": [
+						"{{HOST_CLOUD}}"
+					],
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MONITORING_ROUTES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST_CLOUD}}/routes",
+					"host": [
+						"{{HOST_CLOUD}}"
+					],
+					"path": [
+						"routes"
+					]
+				}
+			},
+			"response": []
 		}
 	],
-	"protocolProfileBehavior": {}
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST_LOCAL",
+			"value": "http://localhost:9080"
+		},
+		{
+			"key": "HOST_CLOUD",
+			"value": "https://us-persons-wcyidxth5q-uc.a.run.app"
+		}
+	]
 }

@@ -33,6 +33,7 @@ dependencies {
     implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus")
     implementation("io.micronaut.beanvalidation:micronaut-hibernate-validator")
     implementation("io.micronaut.mongodb:micronaut-mongo-reactive")
+    implementation("io.micronaut.mongodb:micronaut-mongo-sync")
     implementation("io.micronaut.gcp:micronaut-gcp-pubsub")
     implementation("io.micronaut.reactor:micronaut-reactor")
     runtimeOnly("ch.qos.logback:logback-classic")

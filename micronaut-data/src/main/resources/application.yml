@@ -3,6 +3,8 @@ micronaut:
     name: micronaut-data
   server:
     port: ${APP_PORT:9080}
+    cors:
+      enabled: true
 ---
 datasources:
   default:
@@ -63,3 +65,24 @@ rapidoc:
   bg-color: #14191f
   text-color: #aec2e0
   sort-endpoints-by: method
+---
+micronaut:
+  metrics:
+    enabled: true
+    sensitive: false
+    binders:
+      jdbc:
+        enabled: true
+    export:
+      prometheus:
+        enabled: true
+        step: PT1M
+        descriptions: true
+---
+endpoints:
+  health:
+    enabled: true
+    sensitive: false
+  routes:
+    enabled: true
+    sensitive: false

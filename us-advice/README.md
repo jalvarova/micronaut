@@ -100,6 +100,42 @@ curl https://us-advice-__________run.app/usAdvice
 
 - [Micronaut Hibernate Validator documentation](https://micronaut-projects.github.io/micronaut-hibernate-validator/latest/guide/index.html)
 
+## install Java JDK
 
+[Java JDK](https://www.linode.com/docs/guides/how-to-install-openjdk-on-ubuntu-20-04/)
 
+```bash
+$ java -version
+$ ~/.bashrc
+$ export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+$ export PATH=$PATH:$JAVA_HOME/bin
+$ update- alternatives --config java
+```
 
+## install Sdk Micronaut
+
+```shell script
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk version
+sdk install micronaut
+```
+
+## generated project micronaut
+
+```bash
+mn create-app org.ht.com.pe.us-advice --features=github-workflow-google-cloud-run,gcp-pubsub,http-client,jetty-server,micrometer-prometheus,mongo-reactive,openapi,reactor,logback,hibernate-validator,lombok -v  -x --lang=java  --build=gradle --jdk=11
+```
+
+## Compile project micronaut
+
+```maven
+gradle clean build
+```
+
+###Build images Docker
+
+```bash
+export ARTIFACT_VERSION=1.0.0
+export ARTIFACT_ID=micronaut-data
+```
