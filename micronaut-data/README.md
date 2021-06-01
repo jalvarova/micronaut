@@ -139,6 +139,8 @@ curl --location --request GET 'https://us-persons-wcyidxth5q-uc.a.run.app/routes
 
 [Cloud Run Deploy](https://cloud.google.com/sdk/gcloud/reference/beta/run/deploy)
 
+[Docker Multi Stage](https://docs.docker.com/develop/develop-images/multistage-build/)
+
 ## Feature http-client documentation
 
 - [Micronaut Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
