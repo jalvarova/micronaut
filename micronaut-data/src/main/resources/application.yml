@@ -80,6 +80,8 @@ micronaut:
         descriptions: true
 ---
 endpoints:
+  prometheus:
+    sensitive: false
   health:
     enabled: true
     sensitive: false

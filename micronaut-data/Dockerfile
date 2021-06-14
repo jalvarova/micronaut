@@ -22,5 +22,4 @@ RUN ls -lF
 RUN mkdir -p /${ARTIFACT_ID}/resources
 COPY src/main/resources/* /${ARTIFACT_ID}/resources/
 CMD ["sh","-c","java -jar app.jar -Duser.timezone=America/Lima ${JAVA_OPTS}"]
-# Clean APK cache
 RUN du -sh /var/cache/apt
