@@ -8,8 +8,8 @@
 
 ## Install Micronaut SDK
 
-> First we will install the sdk for micronaunt to create a project with micronaut, 
-> we will use the following commands :
+> First we'll install the SDK micronaunt to create a project java with framework micronaut. 
+> Used the following commands :
 
 ```bash
 curl -s "https://get.sdkman.io" | bash
@@ -70,7 +70,7 @@ micronaut:
 
 #### Micrometer Metrics Endpoint
 
-> The metrics endpoint returns information about the "metrics" of the application. To execute the metrics endpoint, send a GET request to /metrics
+> The metrics endpoint returns information about the "metrics" of the application. To execute send a GET request to /metrics
 
 ```yaml
 ---
@@ -116,8 +116,8 @@ jpa:
 
 ### Development with Rest Api and Micronaut 
 
-> In true Spring style. Micronaut, has annotations to declare the class as a controller and annotate the methods to be defined as http operations. 
-> Also, we will declare Swagger annotations for REST API documentation as shown in the following example:
+> In true Spring Boot style. Micronaut, has annotations to declare the class as a controller and annotate the methods to be defined as http operations. 
+> Also, we'll declare Swagger annotations for REST API documentation, like the following example:
 
 ```java
 @Validated
@@ -292,7 +292,7 @@ public interface PersonRepository extends CrudRepository<Person, Long> {
 }
 ```
 
-> In the reactive business logic layer, we will access the repository and make queries and transactions to the database. 
+> In the reactive business logic layer, we'll access the repository and make queries and transactions to the database. 
 > Finally the business layer is called in the controller. 
 >
 ```java
@@ -343,7 +343,7 @@ public class ProductService {
 
 ### Compile project micronaut with maven wrapper
 
-> This shell script is at the root of the project, we will use it to compile the already generated project.
+> This shell script is at the root of the project, compiler the already generated project.
 
 ```bash
 .\mvnw clean install
@@ -389,7 +389,7 @@ docker build --build-arg ARTIFACT_ID . -t us-persons:1.0.0
 docker run -d --name us-persons -e APP_PORT=8080 -p 8080:8080 us-persons:1.0.0
 ```
 
-> Create a local tag container registry to publish to the Google Cloud container registry
+> Create a local tag, to publish to the Google Cloud container registry
 
 ```bash
 docker tag us-persons gcr.io/[PROJECT ID]/us-persons:1.0.0
@@ -409,14 +409,15 @@ docker tag us-persons gcr.io/[PROJECT ID]/us-persons:1.0.0
 
  * Install SDK gcloud
  * Google Account
+ * Docker image
 
-> We are going to access the GCP console with the account created Google
+> We're going to access the GCP console with the account created Google
 
 ```bash
 gcloud auth login
 ```
 
-> With the tag created that we are based on the image created locally, we are going to publish the tag in the container registry
+> With the tag created that we're based on the image created locally, we're going to publish the tag in the container registry
 
 ```bash
 gcloud docker --  push gcr.io/[PROJECT ID]//us-persons:1.0.0
@@ -514,10 +515,10 @@ curl --location --request GET 'https://us-persons-wcyidxth5q-uc.a.run.app/routes
 
 ## Conclusions
 
-We have seen the whole picture from the construction and documentation of a REST API with Micronaut,
-and to access the data with Micronaut Data. Then build an image with Docker Multi-Stage. Next, 
-publish the image to the GCP container registry. Finally, deploy with the GCLOUD CLI in Cloud Run 
-to enable our API and be able to create an ecosystem of microservices in high availability and easy to deploy.
+We have seen the whole picture from the construction and documentation of a REST API with Micronaut, 
+and to access the database with Micronaut Data. Then build an image with Docker Multi-Stage. Next, 
+publish the image to the GCP container registry. Finally, deploy with the GCP CLI in Cloud Run to 
+enable our API and be able to create an ecosystem of microservices in high availability and easy to deploy.
 
 ## Next steps
 
