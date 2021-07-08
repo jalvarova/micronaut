@@ -6,7 +6,7 @@ COPY . /artifact
 RUN mvn clean install
 RUN ls -la
 
-FROM openjdk:8
+FROM adoptopenjdk/openjdk8
 ENV ARTIFACT_ID=micronaut-data
 
 RUN apt-get update \
