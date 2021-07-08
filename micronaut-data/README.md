@@ -392,7 +392,7 @@ docker run -d --name us-persons -e APP_PORT=8080 -p 8080:8080 us-persons:1.0.0
 > Create a local tag container registry to publish to the Google Cloud container registry
 
 ```bash
-docker tag us-persons gcr.io/[PROJECT ID]/us-persons:1.0.0
+docker tag us-persons:1.0.0 gcr.io/[PROJECT ID]/us-persons:1.0.0
 ```
 
 # GCP CLOUD RUN
@@ -419,19 +419,20 @@ gcloud auth login
 > With the tag created that we are based on the image created locally, we are going to publish the tag in the container registry
 
 ```bash
-gcloud docker --  push gcr.io/[PROJECT ID]//us-persons:1.0.0
+gcloud auth configure-docker
+docker --  push gcr.io/${PROJECT_ID}//us-persons:1.0.0
 ```
 
 > Deploy the service API in Cloud Run and verify the deployment in the GCP console.
 
 ```bash
 gcloud beta run deploy us-persons 
---image gcr.io/[PROJECT ID]/us-persons:VERSION 
---set-env-vars APP_PORT=8080
+--image gcr.io/${PROJECT_ID}/us-persons:${VERSION}
+--set-env-vars APP_PORT=8080 
 --platform managed 
---allow-unauthenticated 
---cpu=1 
---memory=512Mi 
+--allow-unauthenticated  
+--cpu=1
+--memory=512Mi
 --region=us-central1
 ```
 
@@ -446,7 +447,7 @@ gcloud beta run deploy us-persons
 #### Save Person
 
 ```bash
-curl --location --request POST 'https://us-persons-wcyidxth5q-uc.a.run.app/api/v1/persons' \
+curl --location --request POST 'https://us-persons-xfrmmz5d4a-uc.a.run.app/api/v1/persons' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "name": "Celeste",
@@ -464,7 +465,7 @@ curl --location --request POST 'https://us-persons-wcyidxth5q-uc.a.run.app/api/v
 #### Update Person
 
 ```bash
-curl --location --request PUT 'https://us-persons-wcyidxth5q-uc.a.run.app/api/v1/persons' \
+curl --location --request PUT 'https://us-persons-xfrmmz5d4a-uc.a.run.app/api/v1/persons' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "id": 1,
@@ -482,34 +483,34 @@ curl --location --request PUT 'https://us-persons-wcyidxth5q-uc.a.run.app/api/v1
 #### Delete Person
 
 ```bash
-curl --location --request DELETE 'https://us-persons-wcyidxth5q-uc.a.run.app/api/v1/persons/1'
+curl --location --request DELETE 'https://us-persons-xfrmmz5d4a-uc.a.run.app/api/v1/persons/1'
 ```
 
 #### Get ALL Person
 
 ```bash
-curl --location --request GET 'https://us-persons-wcyidxth5q-uc.a.run.app/api/v1/persons'
+curl --location --request GET 'https://us-persons-xfrmmz5d4a-uc.a.run.app/api/v1/persons'
 ```
 
 #### Find By ID Person
 
 ```bash
-curl --location --request GET 'https://us-persons-wcyidxth5q-uc.a.run.app/api/v1/persons/1'
+curl --location --request GET 'https://us-persons-xfrmmz5d4a-uc.a.run.app/api/v1/persons/1'
 ```
 
 #### Api Swagger
 
 ```bash
-curl https://us-persons-wcyidxth5q-uc.a.run.app/swagger/views/rapidoc/index.html
-curl https://us-persons-wcyidxth5q-uc.a.run.app/swagger/views/swagger-ui/index.html
+curl https://us-persons-xfrmmz5d4a-uc.a.run.app/swagger/views/rapidoc/index.html
+curl https://us-persons-xfrmmz5d4a-uc.a.run.app/swagger/views/swagger-ui/index.html
 ```
 
 #### Endpoint Monitoring
 
 ```bash
-curl --location --request GET 'https://us-persons-wcyidxth5q-uc.a.run.app/health'
-curl --location --request GET 'https://us-persons-wcyidxth5q-uc.a.run.app/metrics'
-curl --location --request GET 'https://us-persons-wcyidxth5q-uc.a.run.app/routes'
+curl --location --request GET 'https://us-persons-xfrmmz5d4a-uc.a.run.app/health'
+curl --location --request GET 'https://us-persons-xfrmmz5d4a-uc.a.run.app/metrics'
+curl --location --request GET 'https://us-persons-xfrmmz5d4a-uc.a.run.app/routes'
 ```
 
 ## Conclusions
