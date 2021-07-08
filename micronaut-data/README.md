@@ -421,7 +421,7 @@ gcloud auth login
 
 ```bash
 gcloud auth configure-docker
-docker --  push gcr.io/${PROJECT_ID}//us-persons:1.0.0
+docker push gcr.io/${PROJECT_ID}//us-persons:1.0.0
 ```
 
 > Deploy the service API in Cloud Run and verify the deployment in the GCP console.
